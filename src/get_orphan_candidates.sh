@@ -27,6 +27,6 @@ gzip $archiveFile
 chmod 0600 $zipFile
 
 # Check which links from the past are not in the current sitemap
-diff --new-line-format="" --unchanged-line-format="" <(sort ${domainTmpFolder}${name}_unique_links_total) <(sort ${domainTmpFolder}${name}_unique_links_2020) > ${domainFolder}${name}_orphan_candidates
+diff --new-line-format="" --unchanged-line-format="" <(sort ${domainTmpFolder}${name}_unique_links_total) <(sort ${domainTmpFolder}${name}_unique_links_2020) > ${domainTmpFolder}${name}_orphan_candidates
 # Make sure data is not world readable
-chmod 0600 ${domainFolder}${name}_orphan_candidates
+chmod 0600 ${domainTmpFolder}${name}_orphan_candidates

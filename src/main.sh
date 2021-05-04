@@ -57,14 +57,14 @@ start=`date +%s`
 echo "Extracting candidate orphan pages for ${domain}."
 bash get_orphan_candidates.sh ${sitemaps}${domain}_${date}.txt.gz
 end=`date +%s`
-numberOfPages=$(wc -l ${domainFolder}${domain}_orphan_candidates | awk '{print $1}')
+numberOfPages=$(wc -l ${domainTmpFolder}${domain}_orphan_candidates | awk '{print $1}')
 echo "Extracting candidate orphan pages for ${domain} took `expr $end - $start` seconds, and resulted in ${numberOfPages} pages."
 
 # Filter out certain file extensions
 start=`date +%s`
 echo "Filtering out list of file extensions for ${domain}."
-bash filter_file_extensions.sh ${domainFolder}${domain}_orphan_candidates
-mv ${domainFolder}${domain}_orphan_candidates_filtered ${domainFolder}${domain}_list_to_probe
+bash filter_file_extensions.sh ${domainTmpFolder}${domain}_orphan_candidates
+mv ${domainTmpFolder}${domain}_orphan_candidates_filtered ${domainFolder}${domain}_list_to_probe
 end=`date +%s`
 numberOfPages=$(wc -l ${domainFolder}${domain}_list_to_probe | awk '{print $1}')
 echo "Filtering out list of file extensions for ${domain} took `expr $end - $start` seconds, and resulted in ${numberOfPages} pages."
@@ -95,10 +95,10 @@ echo "Checking status codes for ${numberOfPages} pages on ${domain} took `expr $
 # Extract links with status code 200
 start=`date +%s`
 echo "Get links with status code 200 for ${domain}."
-cat ${domainTmpFolder}${domain}_status_codes | awk '$1 ~ /^200/' | awk '{print $2}' > ${domainTmpFolder}${domain}_status_code_200
+cat ${domainTmpFolder}${domain}_status_codes | awk '$1 ~ /^200/' | awk '{print $2}' > ${domainFolder}${domain}_potential_orphans
 # Make sure data is not world readable
-chmod 0600 ${domainTmpFolder}${domain}_status_code_200
-numberOfPages=$(wc -l ${domainTmpFolder}${domain}_status_code_200 | awk '{print $1}')
+chmod 0600 ${domainFolder}${domain}_potential_orphans
+numberOfPages=$(wc -l ${domainFolder}${domain}_potential_orphans | awk '{print $1}')
 end=`date +%s`
 echo "Extracting links with status code 200 for ${domain} took `expr $end - $start` seconds, and resulted in ${numberOfPages} pages."
 
