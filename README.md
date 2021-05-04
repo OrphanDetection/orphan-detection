@@ -12,7 +12,7 @@ foo@bar:~$ docker run -it --name my_detection --rm orphan-detection
 ```
 After which a shell should appear inside the docker container.
 
-If you want to mount the ```Data``` folder to have access to the results on your host system (i.e. outside the Docker container), you can modify the above command as follows:
+You can mount the ```Data``` folder to have access to the results on your host system (i.e. outside the Docker container). The command below shows how. **Please make sure the path is 1) absolute, and 2) pointing to the Data folder in this project**.
 ```console
 foo@bar:~$ docker run -v [absolute-path-to-Data-folder]:/home/user/orphan-detection/Data -it --name my_detection --rm orphan-detection
 ```
@@ -20,6 +20,7 @@ foo@bar:~$ docker run -v [absolute-path-to-Data-folder]:/home/user/orphan-detect
 ### Instructions
 You can use our implementation by navigating to the ```orphan-detection/src``` folder, and running the ```main.sh``` script providing a domain name:
 ```console
+root@docker:~$ cd orphan-detection/src
 root@docker:~$ bash main.sh [domain-name]
 ```
 
