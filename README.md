@@ -18,7 +18,7 @@ foo@bar:~$ docker run -v [absolute-path-to-Data-folder]:/home/user/orphan-detect
 ```
 
 ### Instructions
-You can use our implementation by running the ```main.sh``` script and providing a domain name:
+You can use our implementation by navigating to the ```orphan-detection/src``` folder, and running the ```main.sh``` script providing a domain name:
 ```console
 root@docker:~$ bash main.sh [domain-name]
 ```
@@ -35,3 +35,5 @@ If you want to use our Dynamic URL Detection heuristic to filter out some of the
 root@docker:~$ bash main.sh -d [domain-name]
 ```
 We recommmend doing this as it significantly reduces the number of URLs to probe. The input parameters of the heuristic can be configured in ```Data/Input/dude_parameters/```. You can change the ```default``` file, or create a new file and adjust to code to use the new file (making it easier to switch and store previous configurations).
+
+You can find the results of your run in ```Data/Results/[domain-name]/[domain-name]_potential_orphans```.
