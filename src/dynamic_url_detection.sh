@@ -5,7 +5,7 @@ domain=$1
 # File that contains orphan pages
 pages=$2
 # Parameters
-parameters=${3:-"../Data/Input/dld_parameters/default"}
+parameters=${3:-"../Data/Input/dude_parameters/default"}
 # Directory to store results
 data="../Data/Results/"
 # Copy of the pages to iterate over
