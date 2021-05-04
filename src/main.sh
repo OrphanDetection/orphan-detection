@@ -79,7 +79,15 @@ then
     mv ${domainFolder}${domain}_list_to_probe_after_link_detection ${domainFolder}${domain}_list_to_probe
     end=`date +%s`
     numberOfPages=$(wc -l ${domainFolder}${domain}_list_to_probe | awk '{print $1}')
-    reduction=$(((initalAmount*100 - numberOfPages*100) / initalAmount))
+    if [ -z "$initialAmount" ]
+    then
+        reduction="0"    
+    elif (( $initialAmount == 0 ))
+    then
+        reduction="0"
+    else
+        reduction=$(((initalAmount*100 - numberOfPages*100) / initalAmount))
+    fi
     echo "Performing Dynamic URL Detection for ${domain} took `expr $end - $start` seconds, and resulted in ${numberOfPages} pages. This is a reduction of ${reduction}%"
 fi
 
