@@ -73,7 +73,7 @@ if $dude
 then
     # Perform Dynamic URL Detection
     start=`date +%s`
-    initalAmount=$(wc -l ${domainFolder}${domain}_list_to_probe | awk '{print $1}')
+    initialAmount=$(wc -l ${domainFolder}${domain}_list_to_probe | awk '{print $1}')
     echo "Performing Dynamic URL Detection for ${domain}."
     bash dynamic_url_detection.sh ${domain} ${domainFolder}${domain}_list_to_probe
     mv ${domainFolder}${domain}_list_to_probe_after_link_detection ${domainFolder}${domain}_list_to_probe
@@ -86,7 +86,7 @@ then
     then
         reduction="0"
     else
-        reduction=$(((initalAmount*100 - numberOfPages*100) / initalAmount))
+        reduction=$(((initialAmount*100 - numberOfPages*100) / initialAmount))
     fi
     echo "Performing Dynamic URL Detection for ${domain} took `expr $end - $start` seconds, and resulted in ${numberOfPages} pages. This is a reduction of ${reduction}%"
 fi
