@@ -2,7 +2,7 @@
 
 # Determines whether the archive data should be downloaded or not
 downloadArchive=true
-# Determines whether to perform Dynamic Link Detection or not
+# Determines whether to perform Dynamic URL Detection or not
 dude=false
 
 # The date of the folder to process.
