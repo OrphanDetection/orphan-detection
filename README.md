@@ -38,3 +38,17 @@ root@docker:~$ bash main.sh -d [domain-name]
 We recommmend doing this as it significantly reduces the number of URLs to probe. The input parameters of the heuristic can be configured in ```Data/Input/dude_parameters/```. You can change the ```default``` file, or create a new file and adjust to code to use the new file (making it easier to switch and store previous configurations).
 
 You can find the results of your run in ```Data/Results/[domain-name]/[domain-name]_potential_orphans```.
+
+### Analysis
+
+In case you want to do an additional automated analysis on the potential orphan pages you can run
+
+ ```console
+root@docker:~$ bash analysis.sh [domain-name] [date]
+```
+
+where ```[date]``` represents the date on which the archive file was downloaded.
+
+Please note, however, that the analysis code was tailored for a large-scale analysis, and can, hence, drastically filter the list of potential orphan pages. We therefore recommend website administrators to be careful with this step, and consider omitting it, as they might already recognize the pages that should not be accessible anymore from the potential orphan list (produced by ```main.sh```).
+
+The results of the analysis can be found in ```Data/Results/[domain-name]/[domain-name]_analysis_results```.
